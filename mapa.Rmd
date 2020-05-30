@@ -2,11 +2,11 @@
 title: "Fun map times"
 author: "Ryan Badiee"
 date: "5/29/2020"
-output: ioslides_presentation
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## May 29, 2020
