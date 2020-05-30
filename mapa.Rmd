@@ -1,7 +1,5 @@
 ---
 title: "Fun map times"
-author: "Ryan Badiee"
-date: "5/29/2020"
 output: html_document
 ---
 
@@ -11,6 +9,35 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## May 29, 2020
 
-```{r}
+```{r, echo=FALSE}
+library(leaflet)
+applebees <- data.frame(lat = c(48.331775 ,48.208931, 48.196185, 47.896190, 47.043937, 46.851562, 46.814806, 47.002435,46.845427, 46.863157, 46.908802),
+                        long = c(-103.661776,-101.315670,-98.889836, -97.068392, -102.765460, -100.770232, -100.784802, -98.687649, -96.860567, -96.824270, -96.801663))
 
+logo <- makeIcon(
+        iconUrl = "https://vignette.wikia.nocookie.net/logopedia/images/1/10/Applebee%27s_1986.svg/revision/latest/scale-to-width-down/340?cb=20181127220141",
+        iconWidth=50, iconHeight=31,
+        iconAnchorX = 31*215/230/2,
+        iconAnchorY=16
+)
+
+sites <- c(
+        "<a href = 'https://www.applebees.com/en/restaurants-williston-nd/6-26th-street-west-9505?utm_source=Google&utm_medium=Maps&utm_campaign=Google+Places'> Williston, ND</a>",
+        "<a href= 'https://www.applebees.com/en/restaurants-minot-nd/2302-15th-streetsw-8645?utm_source=Google&utm_medium=Maps&utm_campaign=Google+Places'> Minot, ND</a>",
+        "<a href='https://www.applebees.com/en/restaurants-devils-lake-nd/509-hwy-2-east-7746?utm_source=Google&utm_medium=Maps&utm_campaign=Google+Places'> Devils Lake, ND</a>",
+        "<a href='https://www.applebees.com/en/restaurants-grand-forks-nd/2851-s-columbia-road-8832?utm_source=Google&utm_medium=Maps&utm_campaign=Google+Places'> Forks, ND </a>",
+        "<a href='https://www.applebees.com/en/restaurants-dickinson-nd/289-15th-street-west-9093?utm_source=Google&utm_medium=Maps&utm_campaign=Google+Places'> Dickinson, ND </a>",
+        "<a href='https://www.applebees.com/en/restaurants-bismarck-nd/434-south-3rd-8697?utm_source=Google&utm_medium=Maps&utm_campaign=Google+Places'> Bismarck, ND 1 </a>",
+        "<a href='https://www.applebees.com/en/restaurants-bismarck-nd/3200-north-14th-street-9644?utm_source=Google&utm_medium=Maps&utm_campaign=Google+Places'> Bismarck, ND 2 </a>",
+        "<a href='https://www.applebees.com/en/restaurants-jamestown-nd/611-25th-street-sw-9787?utm_source=Google&utm_medium=Maps&utm_campaign=Google+Places'> Jamestown, ND </a>",
+        "<a href='https://www.applebees.com/en/restaurants-fargo-nd/2350-45th-street-south-7642?utm_source=Google&utm_medium=Maps&utm_campaign=Google+Places'> Fargo, ND 1 </a>",
+        "<a href='https://www.applebees.com/en/restaurants-fargo-nd/2800-13th-avenue-s-w-8934?utm_source=Google&utm_medium=Maps&utm_campaign=Google+Places'> Fargo, ND 2 </a>",
+        "<a href='https://www.applebees.com/en/restaurants-fargo-nd/2001-16th-street-n-7564?utm_source=Google&utm_medium=Maps&utm_campaign=Google+Places'> Fargo, ND 3 </a>")
+
+
+applebees %>%
+        leaflet() %>%
+        addTiles() %>%
+        addMarkers(icon=logo, popup=sites,
+                   clusterOptions=markerClusterOptions())
 ```
