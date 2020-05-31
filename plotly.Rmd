@@ -1,0 +1,35 @@
+---
+title: "lesmakeaplot"
+date: "5/30/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Disclaimer
+
+- Graph on the next page
+- I used plotly for this
+- I struggled to find an interesting data set, sorry
+- Without further ado, here's my boring plot:
+
+## Plotly graph
+
+```{r, echo=FALSE}
+data("USArrests")
+suppressMessages(library(data.table))
+setDT(USArrests,keep.rownames = TRUE)
+
+suppressMessages(library(plotly))
+fig <- plot_ly(USArrests, x=~UrbanPop, y=~Murder, z=~Assault, type="scatter3d", text=~rn, textposition = 'middle right', mode="markers", color=USArrests$Murder)
+fig <- fig %>% layout(
+    title = "Crime in each state by urban population",
+    scene = list(
+      xaxis = list(title = "Urban Population, %"),
+      yaxis = list(title = "Murders, per 100,000"),
+      zaxis = list(title = "Assaults, per 100,000")
+    ))
+fig
+```
